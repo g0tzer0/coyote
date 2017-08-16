@@ -1,0 +1,84 @@
+=== RUN   TestGetRoot
+Header:
+  Content-Type: [application/json]
+  Location: [/]
+  Date: [Wed, 16 Aug 2017 01:08:18 GMT]
+Status Code: 
+  400
+Body: 
+  {"error": "Unknown request"}
+--- PASS: TestGetRoot (0.04s)
+=== RUN   TestGetIdRoot
+Header:
+  Content-Type: [application/json]
+  Location: [/]
+  Date: [Wed, 16 Aug 2017 01:08:18 GMT]
+Status Code: 
+  400
+Body: 
+  {"error": "Unknown request"}
+--- PASS: TestGetIdRoot (0.00s)
+=== RUN   TestGetFeaturesByInvalidID
+Header:
+  Content-Type: [application/json]
+  Location: [/]
+  Date: [Wed, 16 Aug 2017 01:08:18 GMT]
+Status Code: 
+  400
+Body: 
+  {"error": "Unknown request"}
+--- PASS: TestGetFeaturesByInvalidID (0.00s)
+=== RUN   TestGetFeaturesByValidIDWithoutContent
+Header:
+  Date: [Wed, 16 Aug 2017 01:08:18 GMT]
+  Content-Encoding: [gzip]
+  Content-Type: [application/json]
+  Location: [/id/321654 /id/321654]
+Status Code: 
+  204
+Body: 
+  
+--- PASS: TestGetFeaturesByValidIDWithoutContent (0.00s)
+=== RUN   TestGetFeaturesByValidIDWithContent
+Header:
+  Date: [Wed, 16 Aug 2017 01:08:18 GMT]
+  Content-Type: [application/json]
+  Location: [/id/744]
+Status Code: 
+  200
+Body: 
+  {"cartodb_id":744,"name":"Oriel","population":2500,"coordinates":[43.069946,-80.643498]}
+--- PASS: TestGetFeaturesByValidIDWithContent (0.00s)
+=== RUN   TestGetFeaturesByIDAndInvalidDist
+Header:
+  Location: [/id/744?dist=a]
+  Date: [Wed, 16 Aug 2017 01:08:18 GMT]
+  Content-Type: [application/json]
+Status Code: 
+  400
+Body: 
+  {"error": "Unknown request"}
+--- PASS: TestGetFeaturesByIDAndInvalidDist (0.00s)
+=== RUN   TestGetFeaturesByIDAndValidDistWithoutContent
+Header:
+  Content-Type: [application/json]
+  Location: [/id/321456?dist=5]
+  Date: [Wed, 16 Aug 2017 01:08:18 GMT]
+  Content-Encoding: [gzip]
+Status Code: 
+  204
+Body: 
+  
+--- PASS: TestGetFeaturesByIDAndValidDistWithoutContent (0.00s)
+=== RUN   TestGetFeaturesByIDAndValidDistWithContent
+Header:
+  Date: [Wed, 16 Aug 2017 01:08:18 GMT]
+  Content-Type: [application/json]
+  Location: [/id/744?dist=5]
+Status Code: 
+  200
+Body: 
+  [{"cartodb_id":737,"name":"Beaconsfield","population":2500,"coordinates":[43.064133,-80.598719]},{"cartodb_id":776,"name":"Oxford Centre","population":109,"coordinates":[43.098307,-80.682714]},{"cartodb_id":778,"name":"Vandecar","population":2500,"coordinates":[43.099452,-80.62027]}]
+--- PASS: TestGetFeaturesByIDAndValidDistWithContent (0.00s)
+PASS
+ok  	github.com/g0tzer0/coyote/test	0.531s
